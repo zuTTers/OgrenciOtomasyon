@@ -1,0 +1,103 @@
+﻿@model CepNot.ViewModel.TaskManagerDetail
+
+@{
+    ViewBag.Title = "TaskManager";
+}
+
+<br />
+<div class="content">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="header">
+                <h4 class="title" style="color:blue;"><span class="pe-7s-notebook"></span> &nbsp; Öğrenci Devam Tablosu</h4>
+                <p class="category">Devamsızlık ve imza takip planı yapın</p>
+            </div>
+            <div class="content">
+                <div class="container">
+                    <div class="row">
+                        <h2 class="text-center">Zaman Çizelgesi</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="editor-indent" style="margin-left: 20px; padding: 0 0 0 40px; margin-right: 50px">
+                <table class="agenda">
+                    <thead>
+                        <tr>
+                            <th>Saatler/Günler</th>
+                            <th>@DateTime.Now.ToShortDateString()</th>
+                            <th>@DateTime.Now.AddDays(1).ToShortDateString()</th>
+                            <th>@DateTime.Now.AddDays(2).ToShortDateString()</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>08:00 - 09:15</td>
+                            <td>
+                                @Html.TextBox("Date", DateTime.Now.ToShortDateString() + " 08:00", new { @class = "form-control", @type = "hidden", @id = "txtDatetime1" })
+                                <button id="btnTaskTime1" data-toggle="modal" data-target="#myModal" onclick='GetTaskMan()' class="btn-xs btn btn-warning"><span class="fa fa-pencil"></span>@*@order.Order_Id*@Boş</button>
+                            </td>
+                            <td>
+                                @Html.TextBox("Date", DateTime.Now.AddDays(1).ToShortDateString() + " 08:00", new { @class = "form-control", @type = "hidden", @id = "txtDatetime2" })
+                                <button id="btnTaskTime2" data-toggle="modal" data-target="#myModal" onclick="GetTaskMan(@DateTime.Now.AddDays(1).ToShortDateString())" class="btn-xs btn btn-warning"><span class="fa fa-pencil"></span>@*@order.Order_Id*@Boş</button>
+                            </td>
+                            <td>
+                                @Html.TextBox("Date", DateTime.Now.AddDays(2).ToShortDateString() + " 08:00", new { @class = "form-control", @type = "hidden", @id = "txtDatetime3" })
+                                <button id="btnTaskTime3" data-toggle="modal" data-target="#myModal" onclick="GetTaskMan(@DateTime.Now.AddDays(2).ToShortDateString())" class="btn-xs btn btn-warning"><span class="fa fa-pencil"></span>@*@order.Order_Id*@Boş</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>09:30 - 10:45</td>
+                            <td>
+                                @Html.TextBox("Date", DateTime.Now.ToShortDateString() + " 09:30", new { @class = "form-control", @type = "hidden", @id = "txtDatetime4" })
+                                <button id="btnTaskTime4" data-toggle="modal" data-target="#myModal" onclick='GetTaskMan(@DateTime.Now.ToShortDateString() @DateTime.Now.ToString("09:30"))' class="btn-xs btn btn-warning"><span class="fa fa-pencil"></span>@*@order.Order_Id*@Boş</button>
+                            </td>
+                            <td>
+                                @Html.TextBox("Date", DateTime.Now.AddDays(1).ToShortDateString() + " 09:30", new { @class = "form-control", @type = "hidden", @id = "txtDatetime5" })
+                                <button id="btnTaskTime5" data-toggle="modal" data-target="#myModal" onclick='GetTaskMan(@DateTime.Now.AddDays(1).ToShortDateString() @DateTime.Now.ToString("09.30"))' class="btn-xs btn btn-warning"><span class="fa fa-pencil"></span>@*@order.Order_Id*@Boş</button>
+                            </td>
+                            <td>
+                                @Html.TextBox("Date", DateTime.Now.AddDays(2).ToShortDateString() + " 09:30", new { @class = "form-control", @type = "hidden", @id = "txtDatetime6" })
+                                <button id="btnTaskTime6" data-toggle="modal" data-target="#myModal" onclick='GetTaskMan(@DateTime.Now.AddDays(2).ToShortDateString() @DateTime.Now.ToString("09.30"))' class="btn-xs btn btn-warning"><span class="fa fa-pencil"></span>@*@order.Order_Id*@Boş</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>11:00 - 12:45</td>
+                            <td><button id="btnTaskTime" data-toggle="modal" data-target="#myModal" @*onclick="GetOrder(@order.Order_Id)"*@ class="btn-xs btn btn-warning"><span class="fa fa-pencil"></span>@*@order.Order_Id*@Boş</button></td>
+                            <td><button id="btnTaskTime" data-toggle="modal" data-target="#myModal" @*onclick="GetOrder(@order.Order_Id)"*@ class="btn-xs btn btn-warning"><span class="fa fa-pencil"></span>@*@order.Order_Id*@Boş</button></td>
+                            <td><button id="btnTaskTime" data-toggle="modal" data-target="#myModal" @*onclick="GetOrder(@order.Order_Id)"*@ class="btn-xs btn btn-warning"><span class="fa fa-pencil"></span>@*@order.Order_Id*@Boş</button></td>
+                        </tr>
+                        <tr>
+                            <td>13:00 - 14:15</td>
+                            <td><button id="btnTaskTime" data-toggle="modal" data-target="#myModal" @*onclick="GetOrder(@order.Order_Id)"*@ class="btn-xs btn btn-warning"><span class="fa fa-pencil"></span>@*@order.Order_Id*@Boş</button></td>
+                            <td><button id="btnTaskTime" data-toggle="modal" data-target="#myModal" @*onclick="GetOrder(@order.Order_Id)"*@ class="btn-xs btn btn-warning"><span class="fa fa-pencil"></span>@*@order.Order_Id*@Boş</button></td>
+                            <td><button id="btnTaskTime" data-toggle="modal" data-target="#myModal" @*onclick="GetOrder(@order.Order_Id)"*@ class="btn-xs btn btn-warning"><span class="fa fa-pencil"></span>@*@order.Order_Id*@Boş</button></td>
+                        </tr>
+                        <tr>
+                            <td>14:30 - 15:45</td>
+                            <td><button id="btnTaskTime" data-toggle="modal" data-target="#myModal" @*onclick="GetOrder(@order.Order_Id)"*@ class="btn-xs btn btn-warning"><span class="fa fa-pencil"></span>@*@order.Order_Id*@Boş</button></td>
+                            <td><button id="btnTaskTime" data-toggle="modal" data-target="#myModal" @*onclick="GetOrder(@order.Order_Id)"*@ class="btn-xs btn btn-warning"><span class="fa fa-pencil"></span>@*@order.Order_Id*@Boş</button></td>
+                            <td><button id="btnTaskTime" data-toggle="modal" data-target="#myModal" @*onclick="GetOrder(@order.Order_Id)"*@ class="btn-xs btn btn-warning"><span class="fa fa-pencil"></span>@*@order.Order_Id*@Boş</button></td>
+
+                        </tr>
+                        <tr>
+                            <td>16:00 - 17:15</td>
+                            <td><button id="btnTaskTime" data-toggle="modal" data-target="#myModal" @*onclick="GetOrder(@order.Order_Id)"*@ class="btn-xs btn btn-warning"><span class="fa fa-pencil"></span>@*@order.Order_Id*@Boş</button></td>
+                            <td><button id="btnTaskTime" data-toggle="modal" data-target="#myModal" @*onclick="GetOrder(@order.Order_Id)"*@ class="btn-xs btn btn-warning"><span class="fa fa-pencil"></span>@*@order.Order_Id*@Boş</button></td>
+                            <td><button id="btnTaskTime" data-toggle="modal" data-target="#myModal" @*onclick="GetOrder(@order.Order_Id)"*@ class="btn-xs btn btn-warning"><span class="fa fa-pencil"></span>@*@order.Order_Id*@Boş</button></td>
+
+                        </tr>
+                        <tr>
+                            <td>17:30 - 18:30</td>
+                            <td><button id="btnTaskTime" data-toggle="modal" data-target="#myModal" @*onclick="GetOrder(@order.Order_Id)"*@ class="btn-xs btn btn-warning"><span class="fa fa-pencil"></span>@*@order.Order_Id*@Boş</button></td>
+                            <td><button id="btnTaskTime" data-toggle="modal" data-target="#myModal" @*onclick="GetOrder(@order.Order_Id)"*@ class="btn-xs btn btn-warning"><span class="fa fa-pencil"></span>@*@order.Order_Id*@Boş</button></td>
+                            <td><button id="btnTaskTime" data-toggle="modal" data-target="#myModal" @*onclick="GetOrder(@order.Order_Id)"*@ class="btn-xs btn btn-warning"><span class="fa fa-pencil"></span>@*@order.Order_Id*@Boş</button></td>
+
+                        </tr>
+                    </tbody>
+                </table>
+                <br />
+            </div>
+        </div>
+    </div>
+</div>
+

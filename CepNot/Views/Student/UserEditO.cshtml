@@ -1,0 +1,27 @@
+﻿@model Users
+@{
+    ViewBag.Title = "UserEditO";
+    Layout = "~/Views/Shared/_LayoutO.cshtml";
+}
+<br />
+<div class="container">
+    <h2>Kişi Güncelle</h2>
+    <div class="row">
+        <div class="col-md-12">
+            <form action="@Url.Action("UserUpdateO","Student")" method="post">
+                <div class="row">
+                    <input name="Id" type="hidden" class="form-control" value="@Model.Id" />
+                    <p>Ad  @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })</p>
+                    <p>Soyad  @Html.TextBoxFor(m => m.Surname, new { @class = "form-control" })</p>
+                    <p>Yaş  @Html.TextBoxFor(m => m.Age, new { @class = "form-control" })</p>
+                    <p>Cinsiyet  @Html.TextBoxFor(m => m.Gender, new { @class = "form-control" })</p>
+                    <p>E-Posta  @Html.TextBoxFor(m => m.Mail, new { @class = "form-control" })</p>
+                    <p>Şifre  @Html.TextBoxFor(m => m.Password, new { @class = "form-control" })</p>
+
+                    <p><input class="btn btn-success" type="submit" value="Güncelle" /></p>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

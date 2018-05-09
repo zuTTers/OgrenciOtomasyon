@@ -1,0 +1,172 @@
+﻿@model CepNot.Models.Users
+
+@{
+    ViewBag.Title = "Anasayfa";
+}
+
+<br />
+<div class="content">
+    <div class="container-fluid">
+        <div id="goreveklepanel">
+            <form action="@Url.Action("TaskAdder","Home")" method="post">
+                @Html.TextBox("AId", Session["UserId"], new { @type = "hidden" })
+                <div class="row">
+                    <div class="col-lg-10">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title" style="color:blue;"><span class="fa fa-calendar"></span> &nbsp; Randevu Zamanı Seçimi</h4>
+                                <p class="category">Gün ve saat seçiniz.</p>
+                            </div>
+                            <div class="content">
+                                <div class="col-lg-offset-0">
+                                    <p class="category">Tarih </p>
+                                    @Html.DropDownList("Date", new[] {
+                                       new SelectListItem{ Text=@DateTime.Now.ToShortDateString() , Value=@DateTime.Now.ToShortDateString(), Selected=true },
+                                       new SelectListItem{ Text=@DateTime.Now.AddDays(1).ToShortDateString(), Value=@DateTime.Now.AddDays(1).ToShortDateString() },
+                                       new SelectListItem{ Text=@DateTime.Now.AddDays(2).ToShortDateString(), Value=@DateTime.Now.AddDays(2).ToShortDateString() },
+                                       new SelectListItem{ Text=@DateTime.Now.AddDays(3).ToShortDateString(), Value=@DateTime.Now.AddDays(3).ToShortDateString() },
+                                       new SelectListItem{ Text=@DateTime.Now.AddDays(4).ToShortDateString(), Value=@DateTime.Now.AddDays(4).ToShortDateString() },
+
+                                       }, new { @class = "form-control" })
+                                </div>
+                                <br />
+                                <div class="col-lg-offset-0">
+                                    <p class="category">Saat </p>
+                                    @Html.DropDownList("Time", new[] {
+                                       new SelectListItem{ Text= "08:30", Value="08:30", Selected=true },
+                                       new SelectListItem{ Text= "10:30", Value="10:30" },
+                                       new SelectListItem{ Text= "13:30", Value="13:30" },
+                                       new SelectListItem{ Text= "15:30", Value="15:30" },
+                                       }, new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title"><span class="fa fa-umbrella"></span> Hava Durumu</h4>
+                            </div>
+                            <div class="content">
+                                <p>Yer : @ViewBag.yer</p>
+                                <p>Sıcaklık : @ViewBag.sicaklik </p>
+                                <p>Nem :  @ViewBag.nem</p>
+                                <p>Durum : <span class="@ViewBag.durum"></span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div id="saatler" class="col-lg-10">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title" style="color:blue;"><span class="fa fa-users"></span> &nbsp; Kişi Seçimi</h4>
+                                <p class="category">"Yeni Kişi" seçeneği, ilk defa bir kişi giriyorsanız o kişiyi kayıtta etmiş olursunuz.</p>
+                                <p class="category">"Kayıtlı Kişi" seçeneği, daha önce kayıtlı kişileri görebilirsiniz.</p>
+                            </div>
+                            <div class="content text-center">
+                                <div id="gorevpanel" class="col-lg-offset-0">
+                                    <div class="form-inline required">
+                                        <div class="form-group has-feedback ">
+                                            <label class="input-group">
+                                                <span class="input-group-addon">
+                                                    <input type="radio" id="rdby" name="test" value="0" />
+                                                </span>
+                                                <b class="form-control form-control-static">
+                                                    Yeni Öğrenci
+                                                </b>
+                                                <span class="glyphicon form-control-feedback "></span>
+                                            </label>
+
+                                        </div>
+                                        <div class="form-group has-feedback">
+                                            <label class="input-group">
+                                                <span class="input-group-addon">
+                                                    <input type="radio" id="rdbk" name="test" value="0" checked />
+                                                </span>
+                                                <b class="form-control form-control-static">
+                                                    Kayıtlı Öğrenci
+                                                </b>
+                                                <span class="glyphicon form-control-feedback "></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    @Html.DropDownList("SId", ViewBag.VBSList as SelectList, new { @class = "form-control"})
+                                    @Html.TextBox("Title", "", new { @class = "form-control", @placeholder = "Başlık", @required = "required" })
+                                    @Html.TextBox("Description", "", new { @class = "form-control", @placeholder = "Açıklama", @required = "required" })
+                                    @Html.TextBox("CreatedDate", DateTime.Now.ToShortDateString(), new { @class = "form-control", @type = "hidden" })
+                                    @Html.DropDownList("Type", ViewBag.VBTagsList as SelectList, new { @class = "form-control" })
+                                    <hr />
+                                    <input id="gorevekle" class="form-control" type="submit" value="Görev Ekle" style="background-color:darkslategrey; color:white;" />
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title"><span class="fa fa-bell"></span> Hatırlatıcı</h4>
+                                <p class="category">Etiketler, notlar vs.</p>
+                            </div>
+                            <div class="content">
+                                <div id="hCalendar">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+            <div class="row" id="uyeeklepanel">
+                <div class="col-lg-10">
+                    <div class="card">
+                        <div class="header">
+                            <h4 class="title" style="color:blue;"><span class="fa fa-users"></span> &nbsp; Kişi Ekle</h4>
+                            <p class="category">"Yeni Kişi" ekle..</p>
+                        </div>
+                        <div class="content">
+                            <form action="@Url.Action("UserAdder","Home")" method="post">
+                                @Html.TextBox("Name", "", new { @class = "form-control", @placeholder = "Ad" })
+                                @Html.TextBox("Surname", "", new { @class = "form-control", @placeholder = "Soyad" })
+                                @Html.DropDownList("Gender", new[] {
+                                                                                                        new SelectListItem{ Text= "Erkek", Value="true", Selected=true },
+                                                                                                        new SelectListItem{ Text= "Kadın", Value="false" },
+                                                                                                   }, new { @class = "form-control" })
+                                @Html.DropDownList("Role", ViewBag.VBRolesList as SelectList, new { @class = "form-control" })                             
+                                @Html.TextBox("Mail", "", new { @class = "form-control", @placeholder = "E-Mail" })
+                                <hr />
+                                <input id="uyeekle" class="form-control" type="submit" value="Üye Ekle" style="background-color:darkslategrey; color:white;" />
+                            </form>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="header">
+                                    <h4 class="title"><span class="fa fa-birthday-cake"></span> Boş alan</h4>
+                                    <p class="category">Unuttuğumu belki..</p>
+                                </div>
+                                <div class="content"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@{
+    if (Model != null)
+    { ViewBag.LastId = @Model.UserID; }
+}
+
+
+
+
+
+
+
+
+

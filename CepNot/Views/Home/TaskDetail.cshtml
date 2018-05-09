@@ -1,0 +1,28 @@
+﻿@model CepNot.Models.Tasks
+@{
+    ViewBag.Title = "Görev Bilgileri";
+}
+<br />
+<div class="container">
+    <h2>Görev Detayları</h2>
+    <div class="row">
+        <div class="col-md-12">
+            <ul class="list-group">
+                <li class="list-group-item">ID : @Model.Id</li>
+                <li class="list-group-item">Öğrenci ID : @Model.SId</li>
+                <li class="list-group-item">Başlık: @Model.Title</li>
+                <li class="list-group-item">Açıklama : @Model.Description</li>
+                <li class="list-group-item">Tür : @Model.Type</li>
+                <li class="list-group-item">Tarih : @Model.Date</li>
+                <li class="list-group-item">Saat : @Model.Time</li>
+                <li class="list-group-item">Silindi Mi : @Model.IsDeleted</li>
+                <li class="list-group-item">Aktif Mi : @Model.IsActive</li>
+            </ul>
+            @Html.ActionLink(" Geri", "Index", "Home", new { @class = "btn btn-primary" })
+            @Html.ActionLink(" Düzenle", "TaskEdit", "Home", new { id = Model.Id }, new { @class = "btn btn-warning pull-right" })
+            @Html.ActionLink(" Sil", "TaskDelete", "Home", new { id = Model.Id }, new { @class = "btn btn-danger pull-right" })
+
+        </div>
+    </div>
+</div>
+<br />
