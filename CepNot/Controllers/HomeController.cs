@@ -98,12 +98,10 @@ namespace CepNot.Controllers
                 }
 
                 ViewBag.VBTagsList = new SelectList(mylist.Tags, "TagID", "Title");
-                ViewBag.VBSList = new SelectList(mylist.Users, "UserID", "Name", mylist.Users.OrderByDescending(x => x.UserID).Where(y => y.IsDeleted == false).First().UserID);
+                ViewBag.VBSList = new SelectList(mylist.Users, "UserID", "Name");
                 ViewBag.VBRolesList = new SelectList(mylist.Roles, "RoleID", "RoleName");
-
-                return View();
-
             }
+            return View();
         }
 
         public ActionResult Users(int? p, string filter)
@@ -130,6 +128,9 @@ namespace CepNot.Controllers
                     {
                         query = db.Users.Where(x => x.IsDeleted == false && (x.Name.Contains(filter)));
                     }
+                    mylist.Tags = db.Tags.ToList();
+                    mylist.Users = db.Users.Where(x => x.Role == 3).ToList();
+                    mylist.Roles = db.Roles.ToList();
 
                     mylist.Users = query.OrderByDescending(x => x.UserID).Skip(defaultPageSize * (p.Value - 1)).Take(defaultPageSize).ToList();
                     mylist.CurrentPage = p.Value;
@@ -142,6 +143,9 @@ namespace CepNot.Controllers
                     {
                         mylist.TotalPage = (mylist.TotalCount / defaultPageSize) + 1;
                     }
+                    ViewBag.VBTagsList = new SelectList(mylist.Tags, "TagID", "Title");
+                    ViewBag.VBSList = new SelectList(mylist.Users, "UserID", "Name");
+                    ViewBag.VBRolesList = new SelectList(mylist.Roles, "RoleID", "RoleName");
 
                 }
                 return View(mylist);
@@ -279,10 +283,14 @@ namespace CepNot.Controllers
                     {
                         query = db.Tasks.Where(x => x.Title.Contains(filter));
                     }
+                    mylist.Tags = db.Tags.ToList();
+                    mylist.Users = db.Users.Where(x => x.Role == 3).ToList();
+                    mylist.Roles = db.Roles.ToList();
 
                     mylist.Tasks = query.OrderByDescending(x => x.TaskID).Skip(defaultPageSize * (p.Value - 1)).Take(defaultPageSize).ToList();
                     mylist.CurrentPage = p.Value;
                     mylist.TotalCount = query.Count();
+
                     if ((mylist.TotalCount % defaultPageSize) == 0)
                     {
                         mylist.TotalPage = mylist.TotalCount / defaultPageSize;
@@ -291,6 +299,10 @@ namespace CepNot.Controllers
                     {
                         mylist.TotalPage = (mylist.TotalCount / defaultPageSize) + 1;
                     }
+
+                    ViewBag.VBTagsList = new SelectList(mylist.Tags, "TagID", "Title");
+                    ViewBag.VBSList = new SelectList(mylist.Users, "UserID", "Name");
+                    ViewBag.VBRolesList = new SelectList(mylist.Roles, "RoleID", "RoleName");
                 }
                 return View(mylist);
 
@@ -422,7 +434,26 @@ namespace CepNot.Controllers
             }
             else
             {
-                return View();
+                using (var db = new CepNotEntities())
+                {
+                    IQueryable<Tasks> query = null;
+
+                    query = db.Tasks.Where(x => 1 == 1);
+
+                    List<Tasks> tasklist = query.ToList();
+
+
+                    mylist.Tags = db.Tags.ToList();
+                    mylist.Users = db.Users.Where(x => x.Role == 3).ToList();
+
+
+                    ViewBag.VBTasksList = new SelectList(tasklist, "TaskID", "Title");
+                    ViewBag.VBTagsList = new SelectList(mylist.Tags, "TagID", "Title");
+                    ViewBag.VBSList = new SelectList(mylist.Users, "UserID", "Name", mylist.Users.OrderByDescending(x => x.UserID).Where(y => y.IsDeleted == false).First().UserID);
+
+                    return View();
+                }
+                
             }
 
         }
@@ -442,6 +473,9 @@ namespace CepNot.Controllers
 
         public ActionResult TaskManager()
         {
+            TaskManagerDetail tasker = new TaskManagerDetail();
+            IQueryable<Tasks> query = null;
+
             if (Session["UserId"] == null)
             {
                 return RedirectToAction("Index", "Login");
@@ -452,20 +486,30 @@ namespace CepNot.Controllers
                 {
                     using (var db = new CepNotEntities())
                     {
+
+
+                        query = db.Tasks.Where(x => 1 == 1);
+
+                        List<Tasks> tasklist = query.ToList();
+                        tasker.TasksList = query.ToList();
+
+
                         mylist.Tags = db.Tags.ToList();
                         mylist.Users = db.Users.Where(x => x.Role == 3).ToList();
+
+
+                        ViewBag.VBTasksList = new SelectList(tasklist, "TaskID", "Title");
+                        ViewBag.VBTagsList = new SelectList(mylist.Tags, "TagID", "Title");
+                        ViewBag.VBSList = new SelectList(mylist.Users, "UserID", "Name", mylist.Users.OrderByDescending(x => x.UserID).Where(y => y.IsDeleted == false).First().UserID);
+                        return View(tasker);
                     }
 
-                    ViewBag.VBTagsList = new SelectList(mylist.Tags, "TagID", "Title");
-                    ViewBag.VBSList = new SelectList(mylist.Users, "UserID", "Name", mylist.Users.OrderByDescending(x => x.UserID).Where(y => y.IsDeleted == false).First().UserID);
-
                 }
-                catch (Exception ex)
+                catch
                 {
 
                     throw;
                 }
-                return View();
 
             }
         }
@@ -493,7 +537,7 @@ namespace CepNot.Controllers
                         taskadd = db.Tasks.Where(x => x.TaskID == taskManagerDetail.TaskID).FirstOrDefault();
                     }
 
-                    
+
                     taskadd.AId = taskManagerDetail.AId;
                     taskadd.SId = taskManagerDetail.SId;
                     taskadd.Title = taskManagerDetail.Title;
@@ -504,7 +548,7 @@ namespace CepNot.Controllers
                     taskadd.CreatedUser = taskManagerDetail.CreatedUser;
                     taskadd.IsActive = taskManagerDetail.IsActive;
                     taskadd.IsDeleted = taskManagerDetail.IsDeleted;
-                    
+
 
                     if (taskManagerDetail.TaskID == 0)
                     {
@@ -540,7 +584,7 @@ namespace CepNot.Controllers
             return Json(ret);
         } // kullanılmıyor şu an
 
-        public JsonResult TaskManGet(DateTime dateId)
+        public JsonResult TaskManGet(int TaskID)
         {
             ReturnValue ret = new ReturnValue();
             TaskManagerDetail taskManDetail = new TaskManagerDetail();
@@ -557,17 +601,21 @@ namespace CepNot.Controllers
             {
                 using (var db = new CepNotEntities())
                 {
-                    var TaskObject = db.Tasks.Select(x => new
+                    var TaskObject = db.Tasks.Where(x => x.TaskID == TaskID).Select(x => new
                     {
                         x.TaskID,
                         x.Title,
+                        x.SId,
+                        x.AId,
                         x.Description,
                         x.Date,
                         x.Type
-                    }).Where(x=>x.Date == dateId).FirstOrDefault();
+                    }).FirstOrDefault();
 
                     taskManDetail.TaskID = TaskObject.TaskID;
                     taskManDetail.Title = TaskObject.Title;
+                    taskManDetail.SId = TaskObject.SId;
+                    taskManDetail.AId = TaskObject.AId;
                     taskManDetail.Description = TaskObject.Description;
                     taskManDetail.Date = TaskObject.Date;
                     taskManDetail.Type = TaskObject.Type;
@@ -587,5 +635,54 @@ namespace CepNot.Controllers
             ret.retObject = taskManDetail;
             return Json(ret);
         }
+
+        public JsonResult GetAllTask()
+        {
+            ReturnValue ret = new ReturnValue();
+            List<TaskManagerDetail> taskManDetail = new List<TaskManagerDetail>();
+
+            if (Shared.CheckSession() == false)
+            {
+                ret.requiredLogin = true;
+                ret.message = "Lütfen giriş yapınız.";
+                ret.success = false;
+                return Json(ret);
+            }
+
+            try
+            {
+                using (var db = new CepNotEntities())
+                {
+                    taskManDetail = db.Tasks.Select(x => new TaskManagerDetail
+                    {
+                        TaskID = x.TaskID,
+                        SId = x.SId,
+                        SName = db.Users.Where(y => y.UserID == x.SId).FirstOrDefault().Name,
+                        AId = x.AId,
+                        AName = db.Users.Where(z => z.UserID == x.AId).FirstOrDefault().Name,
+                        Title = x.Title,
+                        Date = x.Date
+                        
+                    }).Where(x => 1==1).ToList();
+
+                }
+
+                ret.retObject = taskManDetail;
+                return Json(taskManDetail, JsonRequestBehavior.AllowGet);
+
+            }
+            catch (Exception ex)
+            {
+                ex.AddToDBLog("HomeController.GetAllTask");
+                ret.success = false;
+                ret.message = ex.Message;
+            }
+
+            ret.retObject = taskManDetail;
+            return Json(ret, JsonRequestBehavior.AllowGet);
+        }
     }
 }
+
+
+

@@ -16,229 +16,256 @@
     background-attachment: fixed;
 }
 
-.h7 {
-    color: #141823;
-    font-size: 25px;
-    font-weight: bold;
+
+@media (min-width:1200px) {
+    #wrap {
+        width: 600px;
+        height: 80vh !important;
+        padding-top: 20vh;
+        padding-bottom: 10vh;
+    }
 }
 
-.signup-btn {
-    background: #79bc64;
-    background-image: -webkit-linear-gradient(top, #79bc64, #578843);
-    background-image: -moz-linear-gradient(top, #79bc64, #578843);
-    background-image: -ms-linear-gradient(top, #79bc64, #578843);
-    background-image: -o-linear-gradient(top, #79bc64, #578843);
-    background-image: linear-gradient(to bottom, #79bc64, #578843);
-    -webkit-border-radius: 4;
-    -moz-border-radius: 4;
-    border-radius: 4px;
-    text-shadow: 0px 1px 0px #898a88;
-    -webkit-box-shadow: 0px 0px 0px #a4e388;
-    -moz-box-shadow: 0px 0px 0px #a4e388;
-    box-shadow: 0px 0px 0px #a4e388;
-    font-family: Arial;
-    color: #ffffff;
-    font-size: 20px;
-    padding: 10px 20px 10px 20px;
-    border: solid #3b6e22 1px;
-    text-decoration: none;
-}
+    .h7 {
+        color: #141823;
+        font-size: 25px;
+        font-weight: bold;
+    }
 
-    .signup-btn:hover {
+    .signup-btn {
         background: #79bc64;
-        background-image: -webkit-linear-gradient(top, #79bc64, #5e7056);
-        background-image: -moz-linear-gradient(top, #79bc64, #5e7056);
-        background-image: -ms-linear-gradient(top, #79bc64, #5e7056);
-        background-image: -o-linear-gradient(top, #79bc64, #5e7056);
-        background-image: linear-gradient(to bottom, #79bc64, #5e7056);
+        background-image: -webkit-linear-gradient(top, #79bc64, #578843);
+        background-image: -moz-linear-gradient(top, #79bc64, #578843);
+        background-image: -ms-linear-gradient(top, #79bc64, #578843);
+        background-image: -o-linear-gradient(top, #79bc64, #578843);
+        background-image: linear-gradient(to bottom, #79bc64, #578843);
+        -webkit-border-radius: 4;
+        -moz-border-radius: 4;
+        border-radius: 4px;
+        text-shadow: 0px 1px 0px #898a88;
+        -webkit-box-shadow: 0px 0px 0px #a4e388;
+        -moz-box-shadow: 0px 0px 0px #a4e388;
+        box-shadow: 0px 0px 0px #a4e388;
+        font-family: Arial;
+        color: #ffffff;
+        font-size: 20px;
+        padding: 10px 20px 10px 20px;
+        border: solid #3b6e22 1px;
         text-decoration: none;
     }
 
-.navbar-default .navbar-brand {
-    color: #fff;
-    font-size: 30px;
-    font-weight: bold;
-}
-
-.form .form-control {
-    margin-bottom: 10px;
-}
-
-@media (min-width:768px) {
-    #home {
-        margin-top: 50px;
-    }
-
-        #home .slogan {
-            color: #0e385f;
-            line-height: 29px;
-            font-weight: bold;
+        .signup-btn:hover {
+            background: #79bc64;
+            background-image: -webkit-linear-gradient(top, #79bc64, #5e7056);
+            background-image: -moz-linear-gradient(top, #79bc64, #5e7056);
+            background-image: -ms-linear-gradient(top, #79bc64, #5e7056);
+            background-image: -o-linear-gradient(top, #79bc64, #5e7056);
+            background-image: linear-gradient(to bottom, #79bc64, #5e7056);
+            text-decoration: none;
         }
-}
 
-/*Takvim*/
-.ui-datepicker-calendar tr, .ui-datepicker-calendar td, .ui-datepicker-calendar td a, .ui-datepicker-calendar th {
-    font-size: inherit;
-}
+    .navbar-default .navbar-brand {
+        color: #fff;
+        font-size: 30px;
+        font-weight: bold;
+    }
 
-div.ui-datepicker {
-    font-size: 62%;
-    width: inherit;
-    height: inherit;
-}
+    .form .form-control {
+        margin-bottom: 10px;
+    }
 
-.ui-datepicker-title span {
-    font-size: 100%;
-}
+    @media (min-width:768px) {
+        #home {
+            margin-top: 50px;
+        }
 
-#scrollToTop, #scrollToBottom {
-    cursor: pointer;
-    background-color: #0090CB;
-    display: inline-block;
-    height: 40px;
-    width: 40px;
-    color: #fff;
-    font-size: 16pt;
-    text-align: center;
-    text-decoration: none;
-    line-height: 40px;
-}
+            #home .slogan {
+                color: #0e385f;
+                line-height: 29px;
+                font-weight: bold;
+            }
+    }
 
-/*Zaman Çizelgesi*/
-table.agenda {
-    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-}
-    table.agenda td,
-    table.agenda th {
-        border: 1px solid #fff;
-        padding: 8px;
+    /*Takvim*/
+    .ui-datepicker-calendar tr, .ui-datepicker-calendar td, .ui-datepicker-calendar td a, .ui-datepicker-calendar th {
+        font-size: inherit;
+    }
+
+    div.ui-datepicker {
+        font-size: 62%;
+        width: inherit;
+        height: inherit;
+    }
+
+    .ui-datepicker-title span {
+        font-size: 100%;
+    }
+
+    #scrollToTop, #scrollToBottom {
+        cursor: pointer;
+        background-color: #0090CB;
+        display: inline-block;
+        height: 40px;
+        width: 40px;
+        color: #fff;
+        font-size: 16pt;
         text-align: center;
-    }
-    table.agenda td {
-        padding-top: 12px;
-        padding-bottom: 12px;
-        background-color: #D4E4F7;
-        color: black;
-    }
-th:nth-child(1) {
-    background: #CC9;
-    color: white;
-}
-th:nth-child(2) {
-    background: #236AB9;
-    color: white;
-}
-th:nth-child(3) {
-    background: #236AB9;
-    color: white;
-}
-th:nth-child(4) {
-    background: #236AB9;
-    color: white;
-}
-th:nth-child(5) {
-    background: #236AB9;
-    color: white;
-}
-th:nth-child(6) {
-    background: #236AB9;
-    color: white;
-}
-th:nth-child(7) {
-    background: #236AB9;
-    color: white;
-}
-th:nth-child(8) {
-    background: #236AB9;
-    color: white;
-}
-table.agenda tr:nth-child(1) td:first-child {
-    background: #236AB9;
-    color: white;
-}
-table.agenda tr:nth-child(2) td:first-child {
-    background: #236AB9;
-    color: white;
-}
-table.agenda tr:nth-child(3) td:first-child {
-    background: #236AB9;
-    color: white;
-}
-table.agenda tr:nth-child(4) td:first-child {
-    background: #236AB9;
-    color: white;
-}
-table.agenda tr:nth-child(5) td:first-child {
-    background: #236AB9;
-    color: white;
-}
-table.agenda tr:nth-child(6) td:first-child {
-    background: #236AB9;
-    color: white;
-}
-table.agenda tr:nth-child(7) td:first-child {
-    background: #236AB9;
-    color: white;
-}
-
-/*On-Off Butonu*/
-.switch {
-    position: relative;
-    display: inline-block;
-    width: 45px;
-    height: 20px;
-    vertical-align: middle;
-    margin-top: 8px;
-}
-
-    .switch input {
-        display: none;
+        text-decoration: none;
+        line-height: 40px;
     }
 
-.slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #A1A6AB;
-    -webkit-transition: .4s;
-    transition: .4s;
-}
+    /*Zaman Çizelgesi*/
+    table.agenda {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
 
-    .slider:before {
+        table.agenda td,
+        table.agenda th {
+            border: 1px solid #fff;
+            padding: 8px;
+            text-align: center;
+        }
+
+        table.agenda td {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            background-color: #D4E4F7;
+            color: black;
+        }
+
+    th:nth-child(1) {
+        background: #CC9;
+        color: white;
+    }
+
+    th:nth-child(2) {
+        background: #236AB9;
+        color: white;
+    }
+
+    th:nth-child(3) {
+        background: #236AB9;
+        color: white;
+    }
+
+    th:nth-child(4) {
+        background: #236AB9;
+        color: white;
+    }
+
+    th:nth-child(5) {
+        background: #236AB9;
+        color: white;
+    }
+
+    th:nth-child(6) {
+        background: #236AB9;
+        color: white;
+    }
+
+    th:nth-child(7) {
+        background: #236AB9;
+        color: white;
+    }
+
+    th:nth-child(8) {
+        background: #236AB9;
+        color: white;
+    }
+
+    table.agenda tr:nth-child(1) td:first-child {
+        background: #236AB9;
+        color: white;
+    }
+
+    table.agenda tr:nth-child(2) td:first-child {
+        background: #236AB9;
+        color: white;
+    }
+
+    table.agenda tr:nth-child(3) td:first-child {
+        background: #236AB9;
+        color: white;
+    }
+
+    table.agenda tr:nth-child(4) td:first-child {
+        background: #236AB9;
+        color: white;
+    }
+
+    table.agenda tr:nth-child(5) td:first-child {
+        background: #236AB9;
+        color: white;
+    }
+
+    table.agenda tr:nth-child(6) td:first-child {
+        background: #236AB9;
+        color: white;
+    }
+
+    table.agenda tr:nth-child(7) td:first-child {
+        background: #236AB9;
+        color: white;
+    }
+
+    /*On-Off Butonu*/
+    .switch {
+        position: relative;
+        display: inline-block;
+        width: 45px;
+        height: 20px;
+        vertical-align: middle;
+        margin-top: 8px;
+    }
+
+        .switch input {
+            display: none;
+        }
+
+    .slider {
         position: absolute;
-        content: "";
-        height: 10px;
-        width: 8px;
-        left: 1px;
-        bottom: 1px;
-        background-color: white;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #A1A6AB;
         -webkit-transition: .4s;
         transition: .4s;
     }
 
-input:checked + .slider {
-    background-color: #800080;
-}
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 10px;
+            width: 8px;
+            left: 1px;
+            bottom: 1px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
 
-input:focus + .slider {
-    box-shadow: 0 0 1px #2196F3;
-}
-
-input:checked + .slider:before {
-    -webkit-transform: translateX(25px);
-    -ms-transform: translateX(25px);
-    transform: translateX(25px);
-}
-
-.slider.round {
-    border-radius: 10px;
-}
-
-    .slider.round:before {
-        border-radius: 50%;
+    input:checked + .slider {
+        background-color: #800080;
     }
+
+    input:focus + .slider {
+        box-shadow: 0 0 1px #2196F3;
+    }
+
+    input:checked + .slider:before {
+        -webkit-transform: translateX(25px);
+        -ms-transform: translateX(25px);
+        transform: translateX(25px);
+    }
+
+    .slider.round {
+        border-radius: 10px;
+    }
+
+        .slider.round:before {
+            border-radius: 50%;
+        }

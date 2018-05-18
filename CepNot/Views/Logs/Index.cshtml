@@ -1,0 +1,52 @@
+﻿@model IEnumerable<CepNot.Models.Logs>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Hata Mesajları</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MethodName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExMessage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Message)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedUser)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MethodName)
+        </td>
+        <td>
+            @(item.ExMessage.Length>40 ? item.ExMessage.Substring(0, 40) : item.ExMessage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Message)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedUser)
+        </td>
+        <td>
+            @Html.ActionLink("Details", "Details", new { id=item.LogID })
+        </td>
+    </tr>
+}
+
+</table>

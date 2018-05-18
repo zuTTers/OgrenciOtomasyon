@@ -1,0 +1,58 @@
+﻿@model CepNot.Models.Logs
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Logs</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MethodName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MethodName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExMessage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExMessage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Message)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Message)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedUser)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedUser)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.LogID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

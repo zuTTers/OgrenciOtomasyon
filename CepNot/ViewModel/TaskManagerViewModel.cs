@@ -20,5 +20,6 @@ namespace CepNot.ViewModel
         public Nullable<int> CreatedUser { get; set; }
         public Nullable<bool> IsActive { get; set; }
         public Nullable<bool> IsDeleted { get; set; }
+        public IList<Models.Tasks> TasksList { get; set; }
     }
 }

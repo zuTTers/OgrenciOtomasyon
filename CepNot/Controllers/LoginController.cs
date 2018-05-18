@@ -34,7 +34,7 @@ namespace CepNot.Controllers
 
                     ViewBag.Mesaj = "Hoşgeldiniz Yetkili!";
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("TaskManager", "Home");
                 }
                 else if (userLogin2 != null)
                 {

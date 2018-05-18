@@ -33,8 +33,6 @@
                                 <td class="text-uppercase"><b>Başlık</b></td>
                                 <td class="text-uppercase"><b>Açıklama</b></td>
                                 <td class="text-uppercase"><b>Görev Tarih</b></td>
-                                <td class="text-uppercase"><b>Görev Saat</b></td>
-                                <td class="text-uppercase"><b>Aktif Mi</b></td>
                                 <td></td>
                             </tr>
                             @{
@@ -45,9 +43,7 @@
                                             <td>@task.Title</td>
                                             <td>@task.Description</td>
                                             <td>@task.Date</td>
-                                            <td>@task.Time</td>
-                                            <td>@task.IsActive</td>
-                                            <td>@Html.ActionLink(" İncele", "TaskDetailO", "Student", new { id = task.Id }, new { @class = "btn btn-success" }) </td>
+                                            <td>@Html.ActionLink(" İncele", "TaskDetailO", "Student", new { id = task.TaskID }, new { @class = "btn btn-success" }) </td>
                                         </tr>
                                     }                              
                             }

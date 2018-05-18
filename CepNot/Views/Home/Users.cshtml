@@ -24,24 +24,49 @@
                     <div class="col-lg-12">
                         <table class="table table-condensed">
                             <tr>
-                                <td class="text-uppercase"><b>Ad</b></td>
-                                <td class="text-uppercase"><b>Soyad</b></td>
-                                <td class="text-uppercase"><b>Yaş</b></td>
+                                <td class="text-uppercase"><b>Ad/Soyad</b></td>
+                                <td class="text-uppercase"><b>Doğum Tarihi</b></td>
                                 <td class="text-uppercase"><b>Cinsiyet</b></td>
                                 <td class="text-uppercase"><b>E-Mail</b></td>
                                 <td class="text-uppercase"><b>Rol</b></td>
                                 <td></td>
                             </tr>
-                            @foreach (var user in Model.Users.OrderByDescending(z => z.Id).Where(x => x.IsDeleted == false))
+                            @foreach (var user in Model.Users.OrderByDescending(z => z.UserID).Where(x => x.IsDeleted == false))
                             {
                                 <tr>
                                     <td>@user.Name</td>
-                                    <td>@user.Surname</td>
-                                    <td>@user.Age</td>
-                                    <td>@user.Gender</td>
+                                    <td>@user.Age.Value.ToShortDateString()</td>
+                                    <td>
+                                        @{ if (@user.Gender == false)
+                                            {
+                                                <abbr>Kadın</abbr>
+
+                                            }
+                                            else if (@user.Gender == true)
+                                            {
+                                                <abbr>Erkek</abbr>
+                                            }
+                                        }
+
+                                    </td>
                                     <td>@user.Mail</td>
-                                    <td>@user.Role</td>
-                                    <td>@Html.ActionLink(" İncele", "UserDetail", "Home", new { id = user.Id }, new { @class = "btn btn-success" }) </td>
+                                    <td>
+                                        @{ if (@user.Role == 3)
+                                            {
+                                                <abbr>Öğrenci</abbr>
+
+                                            }
+                                            else if (@user.Role == 2)
+                                            {
+                                                <abbr>Öğretmen</abbr>
+                                            }
+                                            else if (@user.Role == 1)
+                                            {
+                                                <b>Yönetici</b>
+                                            }
+                                        }
+                                    </td>
+                                    <td>@Html.ActionLink(" İncele", "UserDetail", "Home", new { id = user.UserID }, new { @class = "btn btn-success" }) </td>
                                 </tr>
                             }
                         </table>

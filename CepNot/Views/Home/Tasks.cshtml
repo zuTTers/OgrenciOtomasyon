@@ -17,7 +17,7 @@
                         <form action="@Url.Action("Tasks","Home")" method="post">
                             <div class="col-lg-10">
                                 <input name="filter" type="search" class="form-control text-primary" placeholder="Başlık Ara" />
-                                @*@Html.DropDownList("filterx", new[] {
+                                @Html.DropDownList("filterx", new[] {
                                                                    new SelectListItem{ Text=@DateTime.Now.AddDays(-3).ToShortDateString(), Value=@DateTime.Now.AddDays(-3).ToShortDateString() },
                                                                    new SelectListItem{ Text=@DateTime.Now.AddDays(-2).ToShortDateString(), Value=@DateTime.Now.AddDays(-2).ToShortDateString() },
                                                                    new SelectListItem{ Text=@DateTime.Now.AddDays(-1).ToShortDateString(), Value=@DateTime.Now.AddDays(-1).ToShortDateString() },
@@ -26,7 +26,7 @@
                                                                    new SelectListItem{ Text=@DateTime.Now.AddDays(2).ToShortDateString(), Value=@DateTime.Now.AddDays(2).ToShortDateString() },
                                                                    new SelectListItem{ Text=@DateTime.Now.AddDays(3).ToShortDateString(), Value=@DateTime.Now.AddDays(3).ToShortDateString() },
 
-                                                                   }, new { @class = "form-control" })*@
+                                                                   }, new { @class = "form-control" })
                             </div>
                             <div class="col-lg-2"><input type="submit" value="Ara" class="btn btn-primary" /></div>
                         </form>
@@ -41,7 +41,6 @@
                                 <td class="text-uppercase"><b>Başlık</b></td>
                                 <td class="text-uppercase"><b>Açıklama</b></td>
                                 <td class="text-uppercase"><b>Görev Tarih</b></td>
-                                <td class="text-uppercase"><b>Görev Saat</b></td>
                                 <td class="text-uppercase"><b>Aktif Mi</b></td>
                                 <td></td>
                             </tr>
@@ -51,10 +50,9 @@
                                     <td>@task.Type</td>
                                     <td>@task.Title</td>
                                     <td>@task.Description</td>
-                                    <td>@task.Date</td>
-                                    <td>@task.Time</td>
+                                    <td>@task.Date</td>                                   
                                     <td>@task.IsActive</td>
-                                    <td>@Html.ActionLink(" İncele", "TaskDetail", "Home", new { id = task.Id }, new { @class = "btn btn-success" }) </td>
+                                    <td>@Html.ActionLink(" İncele", "TaskDetail", "Home", new { id = task.TaskID }, new { @class = "btn btn-success" }) </td>
                                 </tr>
                             }
                         </table>

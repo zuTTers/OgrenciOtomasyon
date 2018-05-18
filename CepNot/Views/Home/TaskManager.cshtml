@@ -29,69 +29,97 @@
                             <th>@DateTime.Now.AddDays(2).ToShortDateString()</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="tabloveri">
+                        <!--Tablo Dolduruluyor-->
                         <tr>
-                            <td>08:00 - 09:15</td>
+                            <td><b>08:00</b></td>
                             <td>
-                                @Html.TextBox("Date", DateTime.Now.ToShortDateString() + " 08:00", new { @class = "form-control", @type = "hidden", @id = "txtDatetime1" })
-                                <button id="btnTaskTime1" data-toggle="modal" data-target="#myModal" onclick='GetTaskMan()' class="btn-xs btn btn-warning"><span class="fa fa-pencil"></span>@*@order.Order_Id*@Boş</button>
-                            </td>
-                            <td>
-                                @Html.TextBox("Date", DateTime.Now.AddDays(1).ToShortDateString() + " 08:00", new { @class = "form-control", @type = "hidden", @id = "txtDatetime2" })
-                                <button id="btnTaskTime2" data-toggle="modal" data-target="#myModal" onclick="GetTaskMan(@DateTime.Now.AddDays(1).ToShortDateString())" class="btn-xs btn btn-warning"><span class="fa fa-pencil"></span>@*@order.Order_Id*@Boş</button>
-                            </td>
-                            <td>
-                                @Html.TextBox("Date", DateTime.Now.AddDays(2).ToShortDateString() + " 08:00", new { @class = "form-control", @type = "hidden", @id = "txtDatetime3" })
-                                <button id="btnTaskTime3" data-toggle="modal" data-target="#myModal" onclick="GetTaskMan(@DateTime.Now.AddDays(2).ToShortDateString())" class="btn-xs btn btn-warning"><span class="fa fa-pencil"></span>@*@order.Order_Id*@Boş</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>09:30 - 10:45</td>
-                            <td>
-                                @Html.TextBox("Date", DateTime.Now.ToShortDateString() + " 09:30", new { @class = "form-control", @type = "hidden", @id = "txtDatetime4" })
-                                <button id="btnTaskTime4" data-toggle="modal" data-target="#myModal" onclick='GetTaskMan(@DateTime.Now.ToShortDateString() @DateTime.Now.ToString("09:30"))' class="btn-xs btn btn-warning"><span class="fa fa-pencil"></span>@*@order.Order_Id*@Boş</button>
-                            </td>
-                            <td>
-                                @Html.TextBox("Date", DateTime.Now.AddDays(1).ToShortDateString() + " 09:30", new { @class = "form-control", @type = "hidden", @id = "txtDatetime5" })
-                                <button id="btnTaskTime5" data-toggle="modal" data-target="#myModal" onclick='GetTaskMan(@DateTime.Now.AddDays(1).ToShortDateString() @DateTime.Now.ToString("09.30"))' class="btn-xs btn btn-warning"><span class="fa fa-pencil"></span>@*@order.Order_Id*@Boş</button>
-                            </td>
-                            <td>
-                                @Html.TextBox("Date", DateTime.Now.AddDays(2).ToShortDateString() + " 09:30", new { @class = "form-control", @type = "hidden", @id = "txtDatetime6" })
-                                <button id="btnTaskTime6" data-toggle="modal" data-target="#myModal" onclick='GetTaskMan(@DateTime.Now.AddDays(2).ToShortDateString() @DateTime.Now.ToString("09.30"))' class="btn-xs btn btn-warning"><span class="fa fa-pencil"></span>@*@order.Order_Id*@Boş</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>11:00 - 12:45</td>
-                            <td><button id="btnTaskTime" data-toggle="modal" data-target="#myModal" @*onclick="GetOrder(@order.Order_Id)"*@ class="btn-xs btn btn-warning"><span class="fa fa-pencil"></span>@*@order.Order_Id*@Boş</button></td>
-                            <td><button id="btnTaskTime" data-toggle="modal" data-target="#myModal" @*onclick="GetOrder(@order.Order_Id)"*@ class="btn-xs btn btn-warning"><span class="fa fa-pencil"></span>@*@order.Order_Id*@Boş</button></td>
-                            <td><button id="btnTaskTime" data-toggle="modal" data-target="#myModal" @*onclick="GetOrder(@order.Order_Id)"*@ class="btn-xs btn btn-warning"><span class="fa fa-pencil"></span>@*@order.Order_Id*@Boş</button></td>
-                        </tr>
-                        <tr>
-                            <td>13:00 - 14:15</td>
-                            <td><button id="btnTaskTime" data-toggle="modal" data-target="#myModal" @*onclick="GetOrder(@order.Order_Id)"*@ class="btn-xs btn btn-warning"><span class="fa fa-pencil"></span>@*@order.Order_Id*@Boş</button></td>
-                            <td><button id="btnTaskTime" data-toggle="modal" data-target="#myModal" @*onclick="GetOrder(@order.Order_Id)"*@ class="btn-xs btn btn-warning"><span class="fa fa-pencil"></span>@*@order.Order_Id*@Boş</button></td>
-                            <td><button id="btnTaskTime" data-toggle="modal" data-target="#myModal" @*onclick="GetOrder(@order.Order_Id)"*@ class="btn-xs btn btn-warning"><span class="fa fa-pencil"></span>@*@order.Order_Id*@Boş</button></td>
-                        </tr>
-                        <tr>
-                            <td>14:30 - 15:45</td>
-                            <td><button id="btnTaskTime" data-toggle="modal" data-target="#myModal" @*onclick="GetOrder(@order.Order_Id)"*@ class="btn-xs btn btn-warning"><span class="fa fa-pencil"></span>@*@order.Order_Id*@Boş</button></td>
-                            <td><button id="btnTaskTime" data-toggle="modal" data-target="#myModal" @*onclick="GetOrder(@order.Order_Id)"*@ class="btn-xs btn btn-warning"><span class="fa fa-pencil"></span>@*@order.Order_Id*@Boş</button></td>
-                            <td><button id="btnTaskTime" data-toggle="modal" data-target="#myModal" @*onclick="GetOrder(@order.Order_Id)"*@ class="btn-xs btn btn-warning"><span class="fa fa-pencil"></span>@*@order.Order_Id*@Boş</button></td>
+                                <input id="txt1" data-toggle="modal" data-target="#myModal" class="btn-xs btn btn-primary" style="width:100px; color:blue !important;" type="button" name="txt1" value="Boş" />
+                                <input id="txt11" data-toggle="modal" data-target="#myModal" class="btn-xs btn btn-primary" style="width:100px; color:blue !important;" type="hidden" name="txt11" value="" />
 
+                            </td>
+                            <td>
+                                <input id="txt2" data-toggle="modal" data-target="#myModal" class="btn-xs btn btn-primary" style=" width:100px; color:blue !important;" type="button" name="txt2" value="Boş" />
+                                <input id="txt22" data-toggle="modal" data-target="#myModal" class="btn-xs btn btn-primary" style="width:100px; color:blue !important;" type="hidden" name="txt22" value="" />
+
+                            </td>
+                            <td>
+                                <input id="txt3" data-toggle="modal" data-target="#myModal" class="btn-xs btn btn-primary" style="width:100px; color:blue !important;" type="button" name="txt3" value="Boş" />
+                                <input id="txt33" data-toggle="modal" data-target="#myModal" class="btn-xs btn btn-primary" style="width:100px; color:blue !important;" type="hidden" name="txt33" value="" />
+
+                            </td>
                         </tr>
                         <tr>
-                            <td>16:00 - 17:15</td>
-                            <td><button id="btnTaskTime" data-toggle="modal" data-target="#myModal" @*onclick="GetOrder(@order.Order_Id)"*@ class="btn-xs btn btn-warning"><span class="fa fa-pencil"></span>@*@order.Order_Id*@Boş</button></td>
-                            <td><button id="btnTaskTime" data-toggle="modal" data-target="#myModal" @*onclick="GetOrder(@order.Order_Id)"*@ class="btn-xs btn btn-warning"><span class="fa fa-pencil"></span>@*@order.Order_Id*@Boş</button></td>
-                            <td><button id="btnTaskTime" data-toggle="modal" data-target="#myModal" @*onclick="GetOrder(@order.Order_Id)"*@ class="btn-xs btn btn-warning"><span class="fa fa-pencil"></span>@*@order.Order_Id*@Boş</button></td>
+                            <td><b>10:00</b></td>
+                            <td>
+                                <input id="txt4" data-toggle="modal" data-target="#myModal" class="btn-xs btn btn-primary" style="width:100px; color:blue !important;" type="button" name="txt4" value="Boş" />
+                                <input id="txt44" data-toggle="modal" data-target="#myModal" class="btn-xs btn btn-primary" style="width:100px; color:blue !important;" type="hidden" name="txt44" value="" />
 
+                            </td>
+                            <td>
+                                <input id="txt5" data-toggle="modal" data-target="#myModal" class="btn-xs btn btn-primary" style="width:100px; color:blue !important;" type="button" name="txt5" value="Boş" />
+                                <input id="txt55" data-toggle="modal" data-target="#myModal" class="btn-xs btn btn-primary" style="width:100px; color:blue !important;" type="hidden" name="txt55" value="" />
+
+                            </td>
+                            <td>
+                                <input id="txt6" data-toggle="modal" data-target="#myModal" class="btn-xs btn btn-primary" style="width:100px; color:blue !important;" type="button" name="txt6" value="Boş" />
+                                <input id="txt66" data-toggle="modal" data-target="#myModal" class="btn-xs btn btn-primary" style="width:100px; color:blue !important;" type="hidden" name="txt66" value="" />
+
+                            </td>
                         </tr>
                         <tr>
-                            <td>17:30 - 18:30</td>
-                            <td><button id="btnTaskTime" data-toggle="modal" data-target="#myModal" @*onclick="GetOrder(@order.Order_Id)"*@ class="btn-xs btn btn-warning"><span class="fa fa-pencil"></span>@*@order.Order_Id*@Boş</button></td>
-                            <td><button id="btnTaskTime" data-toggle="modal" data-target="#myModal" @*onclick="GetOrder(@order.Order_Id)"*@ class="btn-xs btn btn-warning"><span class="fa fa-pencil"></span>@*@order.Order_Id*@Boş</button></td>
-                            <td><button id="btnTaskTime" data-toggle="modal" data-target="#myModal" @*onclick="GetOrder(@order.Order_Id)"*@ class="btn-xs btn btn-warning"><span class="fa fa-pencil"></span>@*@order.Order_Id*@Boş</button></td>
+                            <td><b>13:00</b></td>
+                            <td>
+                                <input id="txt7" data-toggle="modal" data-target="#myModal" class="btn-xs btn btn-primary" style="width:100px; color:blue !important;" type="button" name="txt7" value="Boş" />
+                                <input id="txt77" data-toggle="modal" data-target="#myModal" class="btn-xs btn btn-primary" style="width:100px; color:blue !important;" type="hidden" name="txt77" value="" />
 
+                            </td>
+                            <td>
+                                <input id="txt8" data-toggle="modal" data-target="#myModal" class="btn-xs btn btn-primary" style="width:100px; color:blue !important;" type="button" name="txt8" value="Boş" />
+                                <input id="txt88" data-toggle="modal" data-target="#myModal" class="btn-xs btn btn-primary" style="width:100px; color:blue !important;" type="hidden" name="txt88" value="" />
+
+                            </td>
+                            <td>
+                                <input id="txt9" data-toggle="modal" data-target="#myModal" class="btn-xs btn btn-primary" style="width:100px; color:blue !important;" type="button" name="txt9" value="Boş" />
+                                <input id="txt99" data-toggle="modal" data-target="#myModal" class="btn-xs btn btn-primary" style="width:100px; color:blue !important;" type="hidden" name="txt99" value="" />
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><b>15:00</b></td>
+                            <td>
+                                <input id="txt10" data-toggle="modal" data-target="#myModal" class="btn-xs btn btn-primary" style="width:100px; color:blue !important;" type="button" name="txt10" value="Boş" />
+                                <input id="txt1010" data-toggle="modal" data-target="#myModal" class="btn-xs btn btn-primary" style="width:100px; color:blue !important;" type="hidden" name="txt1010" value="" />
+
+                            </td>
+                            <td>
+                                <input id="txt11" data-toggle="modal" data-target="#myModal" class="btn-xs btn btn-primary" style="width:100px; color:blue !important;" type="button" name="txt11" value="Boş" />
+                                <input id="txt1111" data-toggle="modal" data-target="#myModal" class="btn-xs btn btn-primary" style="width:100px; color:blue !important;" type="hidden" name="txt1111" value="" />
+
+                            </td>
+                            <td>
+                                <input id="txt12" data-toggle="modal" data-target="#myModal" class="btn-xs btn btn-primary" style="width:100px; color:blue !important;" type="button" name="txt12" value="Boş" />
+                                <input id="txt1212" data-toggle="modal" data-target="#myModal" class="btn-xs btn btn-primary" style="width:100px; color:blue !important;" type="hidden" name="txt1212" value="" />
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><b>17:00</b></td>
+                            <td>
+                                <input id="txt13" data-toggle="modal" data-target="#myModal" class="btn-xs btn btn-primary" style="width:100px; color:blue !important;" type="button" name="txt13" value="Boş" />
+                                <input id="txt1313" data-toggle="modal" data-target="#myModal" class="btn-xs btn btn-primary" style="width:100px; color:blue !important;" type="hidden" name="txt1313" value="" />
+
+                            </td>
+                            <td>
+                                <input id="txt14" data-toggle="modal" data-target="#myModal" class="btn-xs btn btn-primary" style="width:100px; color:blue !important;" type="button" name="txt14" value="Boş" />
+                                <input id="txt1414" data-toggle="modal" data-target="#myModal" class="btn-xs btn btn-primary" style="width:100px; color:blue !important;" type="hidden" name="txt1414" value="" />
+
+                            </td>
+                            <td>
+                                <input id="txt15" data-toggle="modal" data-target="#myModal" class="btn-xs btn btn-primary" style="width:100px; color:blue !important;" type="button" name="txt15" value="Boş" />
+                                <input id="txt1515" data-toggle="modal" data-target="#myModal" class="btn-xs btn btn-primary" style="width:100px; color:blue !important;" type="hidden" name="txt1515" value="" />
+
+                            </td>
                         </tr>
                     </tbody>
                 </table>
