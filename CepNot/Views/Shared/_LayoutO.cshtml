@@ -116,35 +116,30 @@
                 @RenderBody()
             </div>
 
-            <footer class="footer">
+            <footer class="footer navbar-fixed-bottom">
                 <div class="container-fluid">
                     <nav class="pull-left">
                         <ul>
                             <li>
-                                <a href="#">
-                                    Özet
+                                <a href="@Url.Action("TaskManager","Home")">
+                                    Anasayfa
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
-                                    Haftalık Çizelge
+                                <a href="@Url.Action("Tasks","Home")">
+                                    Görevler
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
-                                    Etiketler
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    Takvim
+                                <a href="@Url.Action("Help","Home")">
+                                    İletişim
                                 </a>
                             </li>
                         </ul>
                     </nav>
                     <p class="copyright pull-right">
                         &copy;
-                        <script>document.write(new Date().getFullYear())</script> <a href="@Url.Action("Index","Student")">CEPNOT</a>, Herşeyi not et..
+                        <script>document.write(new Date().getFullYear())</script> <a href="@Url.Action("TaskManager","Student")">CEPNOT</a>, Herşeyi not et..
                     </p>
                 </div>
             </footer>

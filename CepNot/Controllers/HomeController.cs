@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Transactions;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -170,7 +171,7 @@ namespace CepNot.Controllers
                 db.Users.Add(useradd);
                 db.SaveChanges();
             }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("TaskManager", "Home");
         }
 
         public ActionResult UserDetail(int id)
@@ -680,6 +681,148 @@ namespace CepNot.Controllers
 
             ret.retObject = taskManDetail;
             return Json(ret, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetPhone(int User_Id)
+        {
+            ReturnValue ret = new ReturnValue();
+
+            if (Shared.CheckSession() == false)
+            {
+                ret.requiredLogin = true;
+                ret.message = "Lütfen giriş yapınız.";
+                ret.success = false;
+                return Json(ret);
+            }
+            using (TransactionScope scope = new TransactionScope())
+            {
+                try
+                {
+                    using (var db = new CepNotEntities())
+                    {
+
+                        var phonedata = db.Users.Where(x => x.UserID == User_Id).Select(x => new { Phone = x.Mail }).FirstOrDefault();
+
+                        if (phonedata == null)
+                        {
+                            ret.requiredLogin = false;
+                            ret.message = "Lütfen işlem giriniz.";
+                            ret.success = false;
+                            return Json(ret);
+                        }
+
+                        ret.retObject = phonedata;
+                        ret.message = "Başarıyla kaydedildi.";
+                        ret.success = true;
+                        scope.Complete();
+
+                        return Json(phonedata);
+
+                    }
+
+                }
+                catch (Exception ex)
+                {
+
+                    ret.success = false;
+                    ret.message = ex.Message;
+                    ex.AddToDBLog("HomeController.GetPhone");
+                    scope.Dispose();
+                }
+                return Json(ret);
+            }
+        }
+
+        public JsonResult GetName()
+        {
+            ReturnValue ret = new ReturnValue();
+
+            if (Shared.CheckSession() == false)
+            {
+                ret.requiredLogin = true;
+                ret.message = "Lütfen giriş yapınız.";
+                ret.success = false;
+                return Json(ret);
+            }
+            using (TransactionScope scope = new TransactionScope())
+            {
+                try
+                {
+                    using (var db = new CepNotEntities())
+                    {
+
+                        var namedata = db.Users.Where(x => x.Role == 3).Select(x => new { UserID = x.UserID, Name = x.Name }).ToList();
+
+                        if (namedata == null)
+                        {
+                            ret.requiredLogin = false;
+                            ret.message = "Lütfen işlem giriniz.";
+                            ret.success = false;
+                            return Json(ret);
+                        }
+
+
+                        ret.retObject = namedata;
+                        ret.message = "Başarıyla kaydedildi.";
+                        ret.success = true;
+                        scope.Complete();
+
+                        return Json(namedata);
+
+                    }
+
+                }
+                catch (Exception ex)
+                {
+
+                    ret.success = false;
+                    ret.message = ex.Message;
+                    ex.AddToDBLog("HomeController.GetName");
+                    scope.Dispose();
+                }
+                return Json(ret);
+            }
+        }
+
+        public ActionResult NewStudent()
+        {
+            if (Session["UserId"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+            else
+            {
+
+                using (var db = new CepNotEntities())
+                {
+                    mylist.Tags = db.Tags.ToList();
+
+                }
+
+                ViewBag.VBTagsList = new SelectList(mylist.Tags, "TagID", "Title");
+            }
+            return View();
+        }
+
+        public ActionResult StudentAdder(Users user)
+        {
+            Users useradd = new Users();
+            using (var db = new CepNotEntities())
+            {
+
+                useradd.Name = user.Name;
+                useradd.Age = user.Age;
+                useradd.Gender = user.Gender;
+                useradd.Mail = user.Mail;
+                useradd.Password = user.Name;
+                useradd.IsDeleted = false;
+                useradd.IsDeleted = true;
+                useradd.Role = 3;
+
+                db.Users.Add(useradd);
+                db.SaveChanges();
+            }
+            return RedirectToAction("TaskManager", "Home");
         }
     }
 }

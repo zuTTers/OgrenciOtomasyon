@@ -1,5 +1,23 @@
 ﻿var taskObject = { taskUser: [] };
 
+$(".my-select").chosen({ width: "32px;", height: "32px;" });
+$(".chosen-select").chosen({ no_results_text: "Sonuç bulunamadı!" });
+$("#txtSId").chosen().change(drpTelefonGetir);
+
+
+OgrenciAdiGetir();
+
+function drpTelefonGetir() {
+    $.post("GetPhone", {
+        User_Id: $("#txtSId").val()
+    },
+        function (data, status) {
+            $("#txtTitle").val(data.Phone);
+
+        });
+}
+
+
 $("#btnTaskManSave").click(function () {
 
     taskObject.AId = $("#txtAId").val();
@@ -40,7 +58,6 @@ $("#btnTaskManSave").click(function () {
     }
 });
 
-
 function GetTaskMan(taskid) {
     //var date = new Date('2016-01-01 00:00:00');
 
@@ -55,7 +72,7 @@ function GetTaskMan(taskid) {
             $("#txtSId").val(taskObject.SId);
             $("#txtTitle").val(taskObject.Title);
             $("#txtDescription").val(taskObject.Description);
-            $("#txtDate").val(jsDate(taskObject.Date));
+            $("#txtDate").val(jsDate(taskObject.Date).toLocaleString());
             $("#txtType").val(taskObject.Type);
             $("#txtCreatedDate").val(taskObject.CreatedDate);
             $("#txtCreatedUser").val(taskObject.CreatedUser);
@@ -69,6 +86,19 @@ function GetData() {
             taskObject.taskUser.push(data);
         });
 }
+
+function OgrenciAdiGetir() {
+    $.post("GetName",
+        function (data, status) {
+            $('#txtSId').empty(); //remove all child nodes
+            $.each(data, function (idx, obj) {
+                $("#txtSId").append('<option data-img-src="../img/indir.png" value="' + obj.UserID + '">' + obj.Name + '</option>');
+            });
+
+            $('#txtSId').trigger("chosen:updated");
+        });
+}
+
 
 
 

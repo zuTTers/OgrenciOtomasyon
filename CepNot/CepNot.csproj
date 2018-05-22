@@ -97,6 +97,7 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -255,6 +256,7 @@
     <Content Include="assets\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\ImageSelect.css" />
     <Content Include="Content\jquery-ui.min.css" />
+    <Content Include="img\indir.png" />
     <Content Include="Models\CepNoteData.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>CepNoteData.edmx</DependentUpon>
@@ -551,6 +553,7 @@
     <Content Include="Views\Logs\Details.cshtml" />
     <Content Include="Views\Logs\Edit.cshtml" />
     <Content Include="Views\Logs\Index.cshtml" />
+    <Content Include="Views\Home\NewStudent.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

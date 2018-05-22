@@ -1,4 +1,19 @@
-﻿
+﻿.chosen-container .chosen-results {
+    max-height: 100px;
+    font-size:20px;
+}
+.chosen-container-single .chosen-single span {
+    font-size: 20px;
+    padding: 0px 30px 3px 3px;
+}
+
+.chose-image-small {
+    width: 32px;
+    max-height: 32px;
+    vertical-align: middle;
+    margin: -1px 30px -3px 3px;
+}
+
 /*Kayıt Ol*/
 #wrap {
     background-image: -ms-linear-gradient(top, #FFFFFF 0%, #D3D8E8 100%);
@@ -136,79 +151,79 @@
         }
 
     th:nth-child(1) {
-        background: #CC9;
+        background: #00C;
         color: white;
     }
 
-    th:nth-child(2) {
-        background: #236AB9;
-        color: white;
-    }
+th:nth-child(2) {
+    background: #a1b7ff;
+    color: white;
+}
 
-    th:nth-child(3) {
-        background: #236AB9;
-        color: white;
-    }
+th:nth-child(3) {
+    background: #a1b7ff;
+    color: white;
+}
 
-    th:nth-child(4) {
-        background: #236AB9;
-        color: white;
-    }
+th:nth-child(4) {
+    background: #a1b7ff;
+    color: white;
+}
 
-    th:nth-child(5) {
-        background: #236AB9;
-        color: white;
-    }
+th:nth-child(5) {
+    background: #a1b7fe;
+    color: white;
+}
 
-    th:nth-child(6) {
-        background: #236AB9;
-        color: white;
-    }
+th:nth-child(6) {
+    background: #a1b7fe;
+    color: white;
+}
 
-    th:nth-child(7) {
-        background: #236AB9;
-        color: white;
-    }
+th:nth-child(7) {
+    background: #a1b7fe;
+    color: white;
+}
 
-    th:nth-child(8) {
-        background: #236AB9;
-        color: white;
-    }
+th:nth-child(8) {
+    background: #a1b7fe;
+    color: white;
+}
 
     table.agenda tr:nth-child(1) td:first-child {
-        background: #236AB9;
+        background: #00C;
         color: white;
     }
 
-    table.agenda tr:nth-child(2) td:first-child {
-        background: #236AB9;
-        color: white;
-    }
+table.agenda tr:nth-child(2) td:first-child {
+    background: #00C;
+    color: white;
+}
 
-    table.agenda tr:nth-child(3) td:first-child {
-        background: #236AB9;
-        color: white;
-    }
+table.agenda tr:nth-child(3) td:first-child {
+    background: #00C;
+    color: white;
+}
 
-    table.agenda tr:nth-child(4) td:first-child {
-        background: #236AB9;
-        color: white;
-    }
+table.agenda tr:nth-child(4) td:first-child {
+    background: #00C;
+    color: white;
+}
 
-    table.agenda tr:nth-child(5) td:first-child {
-        background: #236AB9;
-        color: white;
-    }
+table.agenda tr:nth-child(5) td:first-child {
+    background: #00C;
+    color: white;
+}
 
-    table.agenda tr:nth-child(6) td:first-child {
-        background: #236AB9;
-        color: white;
-    }
+table.agenda tr:nth-child(6) td:first-child {
+    background: #00C;
+    color: white;
+}
 
-    table.agenda tr:nth-child(7) td:first-child {
-        background: #236AB9;
-        color: white;
-    }
+table.agenda tr:nth-child(7) td:first-child {
+    background: #00C;
+    color: white;
+}
 
     /*On-Off Butonu*/
     .switch {

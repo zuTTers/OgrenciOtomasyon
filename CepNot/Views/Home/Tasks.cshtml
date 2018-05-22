@@ -17,7 +17,7 @@
                         <form action="@Url.Action("Tasks","Home")" method="post">
                             <div class="col-lg-10">
                                 <input name="filter" type="search" class="form-control text-primary" placeholder="Başlık Ara" />
-                                @Html.DropDownList("filterx", new[] {
+                                @*@Html.DropDownList("filterx", new[] {
                                                                    new SelectListItem{ Text=@DateTime.Now.AddDays(-3).ToShortDateString(), Value=@DateTime.Now.AddDays(-3).ToShortDateString() },
                                                                    new SelectListItem{ Text=@DateTime.Now.AddDays(-2).ToShortDateString(), Value=@DateTime.Now.AddDays(-2).ToShortDateString() },
                                                                    new SelectListItem{ Text=@DateTime.Now.AddDays(-1).ToShortDateString(), Value=@DateTime.Now.AddDays(-1).ToShortDateString() },
@@ -26,7 +26,7 @@
                                                                    new SelectListItem{ Text=@DateTime.Now.AddDays(2).ToShortDateString(), Value=@DateTime.Now.AddDays(2).ToShortDateString() },
                                                                    new SelectListItem{ Text=@DateTime.Now.AddDays(3).ToShortDateString(), Value=@DateTime.Now.AddDays(3).ToShortDateString() },
 
-                                                                   }, new { @class = "form-control" })
+                                                                   }, new { @class = "form-control" })*@
                             </div>
                             <div class="col-lg-2"><input type="submit" value="Ara" class="btn btn-primary" /></div>
                         </form>

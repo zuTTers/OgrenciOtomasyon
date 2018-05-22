@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "Yeni Öğrenci";
+}
+
+<br />
+<div class="content">
+    <div class="container-fluid">
+        <div class="card col-lg-6">
+            <div class="header">
+                <h4 class="title" style="color:blue;"><span class="pe-7s-notebook"></span> &nbsp;Yeni Öğrenci Ekle</h4>
+            </div>
+            <div class="content">
+                <form action="@Url.Action("StudentAdder","Home")" method="post">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Öğrenci Adı</label>
+                        <div class="col-md-9">
+                            @Html.TextBox("Name", "", new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Telefon Numarası</label>
+                        <div class="col-md-9">
+                            @Html.TextBox("Mail", "", new { @class = "form-control", @onkeypress = "return IsNumber(event)", @maxlength = "10" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Şifre</label>
+                        <div class="col-md-9">
+                            @Html.TextBox("Password", "", new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Doğum Tarihi</label>
+                        <div class="col-md-9">
+                            @Html.TextBox("Age", "", new { @class = "form-control", @type = "date" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Cinsiyet</label>
+                        <div class="col-md-9">
+                            Erkek @Html.RadioButton("Gender", true, true)
+                            Kadın @Html.RadioButton("Gender", false, false)
+                        </div>
+                    </div>
+                    <button class="btn btn-success" type="submit">Kaydet</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
